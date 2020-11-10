@@ -1,4 +1,4 @@
-# App uploading to IEM
+# App uploading to the Industrial Edge Management
 
 How to upload an application to the Industrial Edge Management
 
