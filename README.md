@@ -11,6 +11,7 @@ How to upload an application to the Industrial Edge Management
     - [Further requirements](#further-requirements)
   - [Uploading an Application to the IEM](#uploading-an-application-to-the-iem)
     - [Creating a project and application in IEM](#creating-a-project-and-application-in-iem)
+    - [Exposing Docker API to IE App Publisher](#exposing-docker-api-to-ie-app-publisher)
     - [Publishing the application to the IEM](#publishing-the-application-to-the-iem)
   - [Documentation](#documentation)
   - [Contribution](#contribution)
