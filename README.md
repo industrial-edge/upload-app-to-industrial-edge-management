@@ -11,6 +11,7 @@ How to upload an application to the Industrial Edge Management
     - [Further requirements](#further-requirements)
   - [Uploading an Application to the IEM](#uploading-an-application-to-the-iem)
     - [Creating a project and application in IEM](#creating-a-project-and-application-in-iem)
+    - [Exposing Docker API to IE App Publisher](#exposing-docker-api-to-ie-app-publisher)
     - [Publishing the application to the IEM](#publishing-the-application-to-the-iem)
   - [Documentation](#documentation)
   - [Contribution](#contribution)
@@ -60,7 +61,32 @@ In the IEM Webinterface:
 
 ![Create new project and app in IEM](doc/graphics/create-project-and-app-iem.gif)
 
-Now a project containing one application is created. You can now start the IE Publisher to upload the application.
+Now a project containing one application is created. To upload it using the IE App Publisher, you first need to expose the Docker API.
+
+### Exposing Docker API to IE App Publisher
+
+To expose the Docker API to the IE App Publisher, enter the following command:
+
+    sudo sytemctl edit docker.service
+
+and add this text to the file
+
+    [Service]
+    ExecStart=
+    ExecStart=/usr/bin/dockerd -H fd:// -H tcp://127.0.0.1:2375
+
+Now save the file, reload the *systemctl* configuration and restart docker.
+
+    sudo systemctl daemon-reload
+    sudo systemctl restart docker.service
+
+To check that the API is exposed, run
+
+    sudo netstat -lntp | grep dockerd  
+
+You should see something similar to
+
+    tcp    0    0 127.0.0.1:2375    0.0.0.0:*     LISTEN    3758/dockerd 
 
 ### Publishing the application to the IEM
 
