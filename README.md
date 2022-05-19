@@ -67,7 +67,7 @@ Now a project containing one application is created. To upload it using the IE A
 
 To expose the Docker API to the IE App Publisher, enter the following command:
 
-    sudo sytemctl edit docker.service
+    sudo systemctl edit docker.service
 
 and add this text to the file
 
