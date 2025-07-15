@@ -31,8 +31,8 @@ Create a new project and application in the IEM and upload a dockerized applicat
 
 ### Used components
 
-- Industrial Edge App Publisher V1.0.0
-- Docker Engine 18.09.6
+- Industrial Edge App Publisher V1.22.0
+- Docker Engine 27.0.3
 - Docker Compose V2.4
 
 ### Further requirements
@@ -70,7 +70,7 @@ In the IEM Webinterface:
 ![Create new project and app in IEM Step 4](doc/graphics/create-project-and-app-iem-step4.png)
 
 8. Enter name, repository name, website and description of the app. The repository name must be unique for the IEM.
-9. Select your desired application icon.
+9. upload your desired application icon.
 10. Click on "Create" to create application inside the project.
 
 ![Create new project and app in IEM Step 5](doc/graphics/create-project-and-app-iem-step5.png)
@@ -109,7 +109,7 @@ You should see something similar to
 
 ### Publishing the application to the IEM
 
-First, the publisher has to connect to a docker engine and a IEM:
+First, the publisher needs to have a "workplace" selected, simply select any folder you like. The publisher then has to connect to a docker engine and a IEM:
 
 - Click on "+ Docker Engine" and enter the IP and Port on which the docker socket is running. Make sure the docker engine is accessible to the IE Publisher. This docker engine must include all docker images specified in the `docker-compose.yml` file of the application
 - Click on "Go Online" to connect the publisher with the IEM
@@ -125,7 +125,7 @@ If you are logged in successfully, you will see your newly created application i
 - Click on "Import YAML" and select the `docker-compose.yml` off the application in your file system
 - The warning `Build (sevices >> <servicename> ) is not supported` can be ignored 
 - Click on "Review" and "Validate and Create" and choose a version label, e.g `0.0.1`
-- Enter the version of the application and click on "create"
+- Make sure that the correct architecture is choosen and click on "create"
 - Upload the app to the IEM by clicking on "Start Upload" and wait for the upload to finish successfully
 
 ![Upload App to IEM](doc/graphics/upload-app-iem.gif)
