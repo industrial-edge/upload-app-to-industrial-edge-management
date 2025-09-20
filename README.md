@@ -109,7 +109,7 @@ You should see something similar to
 
 ### Publishing the application to the IEM
 
-First, the publisher needs to have a "workplace" selected, simply select any folder you like. The publisher then has to connect to a docker engine and a IEM:
+First, the publisher needs to have a "workplace" selected, simply select any folder you like. The publisher then has to connect to a docker engine and an IEM:
 
 - Click on "+ Docker Engine" and enter the IP and Port on which the docker socket is running. Make sure the docker engine is accessible to the IE Publisher. This docker engine must include all docker images specified in the `docker-compose.yml` file of the application
 - Click on "Go Online" to connect the publisher with the IEM
