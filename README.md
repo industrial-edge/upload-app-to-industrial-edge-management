@@ -128,7 +128,7 @@ To create a new app:
 - Add an icon
 - Once all this is done, click on "create"
 
-!(create application menu image)
+![Create App menu](doc/graphics/create-project-and-app-iem-step7)
 
 - Click on the application to start the process of adding a new version for uploading
 - Click on "Add New Version", set the docker compose version according to your `docker-compose.yml` file, e.g `2.4`
