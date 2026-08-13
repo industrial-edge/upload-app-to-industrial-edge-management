@@ -31,7 +31,7 @@ Create a new project and application in the IEM and upload a dockerized applicat
 
 ### Used components
 
-- Industrial Edge App Publisher V1.22.0
+- Industrial Edge App Publisher V1.26.0
 - Docker Engine 27.0.3
 - Docker Compose V2.4
 - Industrial Edge Management Virtual 2.4.2-3
