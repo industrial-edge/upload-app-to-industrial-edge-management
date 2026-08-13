@@ -110,7 +110,7 @@ You should see something similar to
 
 ### Publishing the application to the IEM
 
-First, the publisher needs to have a "workplace" selected, simply select any folder you like. The publisher then has to connect to a docker engine and an IEM:
+First, the publisher needs to have a "workplace" selected, simply select any empty folder you like. The publisher then has to connect to a docker engine and an IEM:
 
 - Click on "+ Docker Engine" and enter the IP and Port on which the docker socket is running. Make sure the docker engine is accessible to the IE Publisher. This docker engine must include all docker images specified in the `docker-compose.yml` file of the application
 - Click on "Go Online" to connect the publisher with the IEM
@@ -118,7 +118,17 @@ First, the publisher needs to have a "workplace" selected, simply select any fol
 
 ![Connect Publisher with docker engine and IEM](doc/graphics/publisher-connect-docker-iem.gif)
 
-If you are logged in successfully, you will see your newly created application in the "My Projects" Section.
+If you are logged in successfully, you will see the doccker engien address on the left hand corner. 
+
+To create a new app:
+- Click on the create button under Device Applications
+- Name your application
+- Introduce the repository name
+- Write a brief description
+- Add an icon
+- Once all this is done, click on "create"
+
+!(create application menu image)
 
 - Click on the application to start the process of adding a new version for uploading
 - Click on "Add New Version", set the docker compose version according to your `docker-compose.yml` file, e.g `2.4`
