@@ -137,9 +137,12 @@ To create a new app:
 - The warning `Build (sevices >> <servicename> ) is not supported` can be ignored 
 - Click on "Review" and "Validate and Create" and choose a version label, e.g `0.0.1`
 - Make sure that the correct architecture is choosen and click on "create"
-- Upload the app to the IEM by clicking on "Start Upload" and wait for the upload to finish successfully
 
 ![Upload App to IEM](doc/graphics/upload-app-iem.gif)
+
+- Upload the app to the IEM by clicking on "Industrial Edge Management", click on yes to conmfirm double verification and wait for the upload to finish successfully
+
+![Upload App to IEM](doc/graphics/upload-app-iem)
 
 The application is now uploaded to the IEM and can be configured and deployed to a IE Device.
 
