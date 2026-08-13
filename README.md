@@ -142,7 +142,7 @@ To create a new app:
 
 - Upload the app to the IEM by clicking on "Industrial Edge Management", click on yes to conmfirm double verification and wait for the upload to finish successfully
 
-![Upload App to IEM](doc/graphics/upload-app-iem)
+![Upload App to IEM](doc/graphics/upload-app-iem.png)
 
 The application is now uploaded to the IEM and can be configured and deployed to a IE Device.
 
