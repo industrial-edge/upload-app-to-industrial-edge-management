@@ -10,7 +10,6 @@ How to upload an application to the Industrial Edge Management
     - [Used components](#used-components)
     - [Further requirements](#further-requirements)
   - [Uploading an Application to the IEM](#uploading-an-application-to-the-iem)
-    - [Creating a project and application in IEM](#creating-a-project-and-application-in-iem)
     - [Exposing Docker API to IE App Publisher](#exposing-docker-api-to-ie-app-publisher)
     - [Publishing the application to the IEM](#publishing-the-application-to-the-iem)
   - [Documentation](#documentation)
@@ -45,43 +44,7 @@ Create a new project and application in the IEM and upload a dockerized applicat
 
 ## Uploading an Application to the IEM
 
-To upload the application, a project with an application has to be created in the IEM first. After that, a dockerized application can be uploaded using the IE Publisher.
-
-### Creating a project and application in IEM
-
-In the IEM Webinterface:
-
-1. Navigate to the "App Projects" tab.
-2. Click on "Create Project" button.
-   
-![Create new project and app in IEM Step 1](doc/graphics/create-project-and-app-iem-step1.png)
-
-3. Enter a project name and description.
-4. Click on the "+" button to add a new company.
-   
-![Create new project and app in IEM Step 2](doc/graphics/create-project-and-app-iem-step2.png)
-
-5. Enter name, address, country, state, city, zip-code, website, phone number and email.
-6. Click "Add" to add new company and assign it to the project.
-
-![Create new project and app in IEM Step 3](doc/graphics/create-project-and-app-iem-step3.png)
-
-7. Click "Next" to create a new application which will be added to the project.
- 
-![Create new project and app in IEM Step 4](doc/graphics/create-project-and-app-iem-step4.png)
-
-8. Enter name, repository name, website and description of the app. The repository name must be unique for the IEM.
-9. upload your desired application icon.
-10. Click on "Create" to create application inside the project.
-
-![Create new project and app in IEM Step 5](doc/graphics/create-project-and-app-iem-step5.png)
-
-11. Confirm the information dialog by clicking on "OK".
-
-![Create new project and app in IEM Step 6](doc/graphics/create-project-and-app-iem-step6.png)
-
-
-Now a project containing one application is created. To upload it using the IE App Publisher, you first need to expose the Docker API.
+To upload the application, it must first be created on the IE Publisher. Once the app is created, it can be uploaded to the IEM connected to the Publisher.
 
 ### Exposing Docker API to IE App Publisher
 
@@ -139,12 +102,26 @@ To create a new app:
 - Make sure that the correct architecture is choosen and click on "create"
 
 ![Upload App to IEM](doc/graphics/upload-app-iem.gif)
+There are two ways of uploading the app to the IEM:
 
+Directly from the APP PUBLISHER:
 - Upload the app to the IEM by clicking on "Industrial Edge Management", click on yes to conmfirm double verification and wait for the upload to finish successfully
 
 ![Upload App to IEM](doc/graphics/upload-app-iem.png)
 
+Directly from the IEM:
+- On the App Publisher, use the export version button to export the app
+
+![](doc/graphics/export_app.png)
+  
+- On your IEM go to the Applications tab and click on the Add Application button. Here browse to select the exported file from the App Publisher and click Add
+
+![](doc/graphics/add_app1.png)
+![](doc/graphics/add_app2.png)
+
 The application is now uploaded to the IEM and can be configured and deployed to a IE Device.
+
+![](doc/graphics/app_on_IEM.png)
 
 ## Documentation
 
