@@ -128,8 +128,11 @@ To create a new app:
 ![](doc/graphics/docker-compose-version.png)
 - Next the docker compose file must be created. There are two ways to continue with the process:
   1. Using the wizard
+     
 ![](doc/graphics/docker-compose-option1.png)  
+  
   2. Using YAML Import
+
 ![](doc/graphics/docker-compose-option2.png)
 
 
