@@ -1,4 +1,4 @@
-<img width="897" height="751" alt="image" src="https://github.com/user-attachments/assets/c5cb461d-3c58-4c38-84d0-a38e22de2713" /># App uploading to the Industrial Edge Management
+# App uploading to the Industrial Edge Management
 
 How to upload an application to the Industrial Edge Management
 
