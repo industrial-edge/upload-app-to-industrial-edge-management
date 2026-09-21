@@ -35,7 +35,7 @@ Create a new project and application in the IEM and upload a dockerized applicat
 ### Used components
 
 - Industrial Edge App Publisher V1.27.9
- Docker Engine 27.0.
+- Docker Engine 27.0.
 - Docker Compose V2.4
 - Industrial Edge Management Pro V2.2.1
 
@@ -56,7 +56,9 @@ To download the App Publisher one must go to the Downloads>Software tab and to t
 ## Installing the Industrial Edge App Publisher
 
 On Linux:
-- Install with apt or dpkg
+- Install with apt or dpkg Using the following comand on the terminal: sudo apt install ./<name-publisher>.deb
+
+Where name-publisher is the path to the downloaded file (If you open the terminal on the same folder as the download only the file must be written)
 
 On Windows:
 - Execute the .msi file
@@ -69,6 +71,7 @@ To upload the application, it must first be created on the IE Publisher. Once th
 
 The first step once the App Publisher is installed is to select a workspace on where the work done will be saved
 To do this, select the workspace button, select a folder and click OK
+
 Note! The folder used as a Workspace must be an empty folder
 
 ![](doc/graphics/workspace.png)
