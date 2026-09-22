@@ -88,6 +88,10 @@ and add this text to the file
     ExecStart=
     ExecStart=/usr/bin/dockerd -H fd:// -H tcp://127.0.0.1:2375
 
+This must be done on the following space or it will be discarded!:
+
+![](doc/graphics/terminal.png)
+
 Now save the file, reload the *systemctl* configuration and restart docker.
 
     sudo systemctl daemon-reload
