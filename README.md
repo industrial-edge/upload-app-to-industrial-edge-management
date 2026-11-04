@@ -9,10 +9,13 @@ How to upload an application to the Industrial Edge Management
   - [Requirements](#requirements)
     - [Used components](#used-components)
     - [Further requirements](#further-requirements)
+  - [Downloading the Industrial Edge App Publisher](#Downloading-the-Industrial-Edge-App-Publisher)
+  - [Installing the Industrial Edge App Publisher](#Installing-the-Industrial-Edge-App-Publisher)
   - [Uploading an Application to the IEM](#uploading-an-application-to-the-iem)
-    - [Creating a project and application in IEM](#creating-a-project-and-application-in-iem)
     - [Exposing Docker API to IE App Publisher](#exposing-docker-api-to-ie-app-publisher)
     - [Publishing the application to the IEM](#publishing-the-application-to-the-iem)
+    - [Creating a new applicatio](#creating-a-new-application)
+  - [New configuration](#new-configuration)
   - [Documentation](#documentation)
   - [Contribution](#contribution)
   - [Licence and Legal Information](#licence-and-legal-information)
@@ -31,10 +34,10 @@ Create a new project and application in the IEM and upload a dockerized applicat
 
 ### Used components
 
-- Industrial Edge App Publisher V1.22.0
-- Docker Engine 27.0.3
+- Industrial Edge App Publisher V1.27.9
+- Docker Engine 27.0.
 - Docker Compose V2.4
-- Industrial Edge Management Virtual 2.4.2-3
+- Industrial Edge Management Pro V2.2.1
 
 ### Further requirements
 
@@ -43,45 +46,35 @@ Create a new project and application in the IEM and upload a dockerized applicat
 - The docker images of the `docker-compose.yml` file are successfully build or pulled and are available in the local docker registry. Use `docker-compose build` in the directory containing the `docker-compose.yml` file to build the docker images needed by the application.
 - The docker engine of the development system is accessible to the IE Publisher.
 
+## Downloading the Industrial Edge App Publisher
+
+To obtain the App Publisher for Industrial Edge, one must firts download the app by purchasing it on the Industrial Edge Hub.
+To download the App Publisher one must go to the Downloads>Software tab and to the Developer Tools. Here you choose the OS you are working with (preferably Ubuntu) and download the prefered version
+
+![](doc/graphics/app-publisher-download.png)
+
+## Installing the Industrial Edge App Publisher
+
+On Linux:
+- Install with apt or dpkg Using the following comand on the terminal: sudo apt install ./<name-publisher>.deb
+
+Where name-publisher is the path to the downloaded file (If you open the terminal on the same folder as the download only the file must be written)
+
+On Windows:
+- Execute the .msi file
+
 ## Uploading an Application to the IEM
 
-To upload the application, a project with an application has to be created in the IEM first. After that, a dockerized application can be uploaded using the IE Publisher.
+To upload the application, it must first be created on the IE Publisher. Once the app is created, it can be uploaded to the IEM connected to the Publisher.
 
-### Creating a project and application in IEM
+### Selecting workspace dierctory
 
-In the IEM Webinterface:
+The first step once the App Publisher is installed is to select a workspace on where the work done will be saved
+To do this, select the workspace button, select a folder and click OK
 
-1. Navigate to the "App Projects" tab.
-2. Click on "Create Project" button.
-   
-![Create new project and app in IEM Step 1](doc/graphics/create-project-and-app-iem-step1.png)
+Note! The folder used as a Workspace must be an empty folder
 
-3. Enter a project name and description.
-4. Click on the "+" button to add a new company.
-   
-![Create new project and app in IEM Step 2](doc/graphics/create-project-and-app-iem-step2.png)
-
-5. Enter name, address, country, state, city, zip-code, website, phone number and email.
-6. Click "Add" to add new company and assign it to the project.
-
-![Create new project and app in IEM Step 3](doc/graphics/create-project-and-app-iem-step3.png)
-
-7. Click "Next" to create a new application which will be added to the project.
- 
-![Create new project and app in IEM Step 4](doc/graphics/create-project-and-app-iem-step4.png)
-
-8. Enter name, repository name, website and description of the app. The repository name must be unique for the IEM.
-9. upload your desired application icon.
-10. Click on "Create" to create application inside the project.
-
-![Create new project and app in IEM Step 5](doc/graphics/create-project-and-app-iem-step5.png)
-
-11. Confirm the information dialog by clicking on "OK".
-
-![Create new project and app in IEM Step 6](doc/graphics/create-project-and-app-iem-step6.png)
-
-
-Now a project containing one application is created. To upload it using the IE App Publisher, you first need to expose the Docker API.
+![](doc/graphics/workspace.png)
 
 ### Exposing Docker API to IE App Publisher
 
@@ -94,6 +87,10 @@ and add this text to the file
     [Service]
     ExecStart=
     ExecStart=/usr/bin/dockerd -H fd:// -H tcp://127.0.0.1:2375
+
+This must be done on the following space or it will be discarded!:
+
+![](doc/graphics/terminal.png)
 
 Now save the file, reload the *systemctl* configuration and restart docker.
 
@@ -110,28 +107,89 @@ You should see something similar to
 
 ### Publishing the application to the IEM
 
-First, the publisher needs to have a "workplace" selected, simply select any folder you like. The publisher then has to connect to a docker engine and an IEM:
-
 - Click on "+ Docker Engine" and enter the IP and Port on which the docker socket is running. Make sure the docker engine is accessible to the IE Publisher. This docker engine must include all docker images specified in the `docker-compose.yml` file of the application
-- Click on "Go Online" to connect the publisher with the IEM
-- Enter the Management URL, click "Connect" and log in with your credentials. 
+- Click on "Go Online" to connect the publisher with the IEM to start the wizard. The following information will be required:
+  - Edge Management URL, click "Connect"
+  - Sign in with your credentials.
+  - Connect to the Docker Engine IP (either type localhost or 127.0.0.1 and 2375 as the Port)
 
 ![Connect Publisher with docker engine and IEM](doc/graphics/publisher-connect-docker-iem.gif)
 
-If you are logged in successfully, you will see your newly created application in the "My Projects" Section.
+If you are logged in successfully, you will see the doccker engien address on the left hand corner. 
+
+### Creating a new application
+
+To create a new app:
+- Click on the create button under Device Applications
+- Name your application
+- Introduce the repository name
+- Write a brief description
+- Add an icon
+- Once all this is done, click on "create"
+
+![Create App menu](doc/graphics/create-project-and-app-iem-step7)
 
 - Click on the application to start the process of adding a new version for uploading
 - Click on "Add New Version", set the docker compose version according to your `docker-compose.yml` file, e.g `2.4`
-- Select the docker compose version according to your `docker-compose.yml` file
-- Click on "Import YAML" and select the `docker-compose.yml` off the application in your file system
-- The warning `Build (sevices >> <servicename> ) is not supported` can be ignored 
-- Click on "Review" and "Validate and Create" and choose a version label, e.g `0.0.1`
-- Make sure that the correct architecture is choosen and click on "create"
-- Upload the app to the IEM by clicking on "Start Upload" and wait for the upload to finish successfully
+![](doc/graphics/app-version.png)
+![](doc/graphics/docker-compose-version.png)
+- Next the docker compose file must be created. There are two ways to continue with the process:
+  1. Using the wizard
+     
+![](doc/graphics/docker-compose-option1.png)  
+  
+  2. Using YAML Import
+
+![](doc/graphics/docker-compose-option2.png)
+
 
 ![Upload App to IEM](doc/graphics/upload-app-iem.gif)
+There are two ways of uploading the app to the IEM:
+
+Directly from the APP PUBLISHER:
+- Upload the app to the IEM by clicking on "Industrial Edge Management", click on yes to conmfirm double verification and wait for the upload to finish successfully
+
+![Upload App to IEM](doc/graphics/upload-app-iem.png)
+
+Directly from the IEM:
+- On the App Publisher, use the export version button to export the app
+
+![](doc/graphics/export_app.png)
+  
+- On your IEM go to the Applications tab and click on the Add Application button. Here browse to select the exported file from the App Publisher and click Add
+
+![](doc/graphics/add_app1.png)
+![](doc/graphics/add_app2.png)
 
 The application is now uploaded to the IEM and can be configured and deployed to a IE Device.
+
+![](doc/graphics/app_on_IEM.png)
+
+## New configuration
+On the App Publisher, the configuration can be changed to suit the most appropriate type you must work with.
+The 4 main App Configuration types are:
+  - Versioned (the most common use case is root CAs using dropdown lists)
+    ![](doc/graphics/versioned.png)
+  - Unversioned (the most common use case is customer certificates using file upload)
+    ![](doc/graphics/unversioned.png)
+  - Templated (the most common use case is app configuration using editable template files)
+    ![](doc/graphics/templated.png)
+  - App Configuration Service (the most common use case is app configuration using inport form)
+    ![](doc/graphics/app-service.png)
+
+To add or change the configuration the following steps must be done:
+1. Bind mount container to file system in docker compose yaml
+2. Define bind mount as "host-path:container-path" (Hostpath must be defined as a relative path “./”)
+![](doc/graphics/bind-mount.png)
+3. Create a new configuration on the App created
+![](doc/graphics/new-config.png)
+4. Follow the new configuration wizard (each one accoreding to the type desired)
+![](doc/graphics/new-config-wizard.png)
+![](doc/graphics/new-config-wizard2.png)
+![](doc/graphics/new-config-wizard3.png)
+
+Once the configuration has been created and saved on the App Publisher, the uploaded app must be installed to the device with the new configuration. This will be done on the IEM
+![](doc/graphics/iem-config.png)
 
 ## Documentation
 
